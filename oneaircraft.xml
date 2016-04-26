@@ -1,0 +1,123 @@
+<!--One Aircraft 2+1
+Reference:
+http://www.oneaircraft.com/ especially http://www.oneaircraft.com/one-aircraft/
+Length	19.68 ft	6,97 m
+Height	6.56 ft	2,2 m
+Wingspan	31.66 ft	9,65 m
+Cabin Length	88.6 in	225 cm
+Cabin Width (inside)	48,4 (47,6) in	123 (121) cm
+Cabin Height	46 in	117 cm
+Design Weights and Loading*
+Maximum Gross Weight	1653 lbs	750 kg
+Standard Empty Weight	783 lbs	355 kg
+Useful Load	870 lbs	395 kg
+Usable Fuel Capacity	36gal/ 214lbs	135 l /97 kg-->
+<!--Coordinates are not fitting yet!!!!-->
+<airplane mass="783" version="YASIM_VERSION_CURRENT">
+
+<!-- Approach configuration -->
+<approach speed="45" aoa="6" fuel="0.3">
+  <control-setting axis="/controls/engines/engine[0]/throttle" value="0.05"/>
+  <control-setting axis="/controls/engines/engine[0]/mixture" value="1.0"/>
+  <control-setting axis="/controls/flight/flaps" value="1.0"/>
+</approach>
+
+<!-- Cruise configuration -->
+<cruise speed="122" alt="7500" fuel="1.0">
+  <control-setting axis="/controls/engines/engine[0]/throttle" value="1.0"/>
+  <control-setting axis="/controls/engines/engine[0]/mixture" value="0.6"/>
+  <control-setting axis="/controls/flight/flaps" value="0.0"/>
+</cruise>
+
+<cockpit x="2.5" y=".33" z="0.6"/>
+
+<fuselage ax="3.1507" ay="0" az="-0.1607" bx="1.8683" by="0" bz="-0.2449" width="0.5" taper="0.9" midpoint="0.5"/><!--Engine-->
+<fuselage ax="1.8683" ay="0" az="-0.2449" bx="-2.0141" by="0" bz="-0.101" width="1" taper="0.5" midpoint="0.2"/><!--Main Fuselage-->
+
+<wing x="1.16914" y="0.6" z="-0.55279" taper="0.65" incidence="-2" twist="2"
+      length="4.4" chord="1.65" sweep="0" dihedral="5" camber="0.1">
+  <stall aoa="18" width="2.0" peak="1.5"/>
+  <flap0 start="0" end="0.5" lift="1.5" drag="1.5"/>
+  <flap1 start="0.5" end="1.0" lift="1.2" drag="1.2"/>
+  <control-input axis="/controls/flight/flaps" control="FLAP0"/>
+  <control-input axis="/controls/flight/aileron" control="FLAP1" split="true"/>
+  <control-input axis="/controls/flight/aileron-trim" control="FLAP1" split="true"/>
+  <control-speed control="FLAP0" transition-time="5"/>
+  <control-output control="FLAP0" prop="/surface-positions/flap-pos-norm"/>
+  <control-output control="FLAP1" side="left" prop="/surface-positions/left-aileron-pos-norm"/>
+  <control-output control="FLAP1" side="right" prop="/surface-positions/right-aileron-pos-norm"/>
+</wing>
+
+<hstab x="-2.5683" y="0.2089" z="0.0323" taper="1.0" effectiveness="2" incidence="1"
+       length="1.6" chord="0.8" sweep="3">
+  <stall aoa="17" width="4" peak="1.5"/>
+  <flap0 start="0" end="1" lift="1.65" drag="1.4"/>
+  <control-input axis="/controls/flight/elevator" control="FLAP0"/>
+  <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
+  <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
+</hstab>
+
+<vstab x="-2.5683" y="0.0" z="0.0323" taper=".5"
+       length="1.2" chord="1.2" sweep="30">
+  <stall aoa="16" width="4" peak="1.5"/>
+  <flap0 start="0" end="1" lift="1.3" drag="1.1"/>
+  <control-input axis="/controls/flight/rudder" control="FLAP0" invert="true"/>
+  <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
+  <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"
+		  min="1" max="-1"/>
+</vstab>
+<!--Rotax 912 ULS with 100hp: https://en.wikipedia.org/wiki/Rotax_912
+##General##
+Type: four-cylinder, four-stroke liquid / air-cooled engine with opposed cylinders, dry sump forced lubrication with separate oil tank, automatic adjustment by hydraulic valve tappet, dual CD carburetors, mechanical diaphragm pump, electronic dual ignition, electric starter, integrated reduction gear 1 : 2.273 or 1 : 2.43
+Bore: 79.5 mm (3.13 in)
+Stroke: 61 mm (2.40 in)
+Displacement: 1,211.2 cm3 (73.91 in3)
+Length: 561 mm (22.1 in)
+Width: 576 mm (22.7 in)
+Dry weight: 60 kg (132.3 lb) with electric starter, carburetors, fuel pump, air filters and oil system
+##Performance##
+Power output: 100hp at 5,800 rpm
+Cruise RPM 5500
+-->
+<propeller  x="2.5337" y="0" z="-0.238" radius="0.859"
+	   cruise-speed="127" cruise-rpm="5500"
+           cruise-alt="8000" cruise-power="95"
+           takeoff-power="100" takeoff-rpm="2500"
+           mass="132.3" moment="4">
+  <piston-engine eng-rpm="5800" alt="0" eng-power="100"
+     displacement="80" compression="8.5"/>
+  <actionpt x="3.2646" y="0" z="-0.16544"/>
+  <control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
+  <control-input axis="/controls/engines/engine[0]/starter" control="STARTER"/>
+  <control-input axis="/controls/engines/engine[0]/magnetos" control="MAGNETOS"/>
+  <control-input axis="/controls/engines/engine[0]/mixture" control="MIXTURE"/>
+</propeller>
+
+<gear x="2.5783" y="0" z="-1.1491" compression=".15"> <!-- nose -->
+  <control-input axis="/controls/flight/rudder" control="STEER" src0="-1" dst0="-0.1" src1="1" dst1="0.1" />
+</gear>
+
+<gear x="1.1243" y="1.0448" z="-1.1706" compression=".15"> <!-- left main -->
+  <control-input axis="/controls/gear/brake-left" control="BRAKE" split="true"/>
+  <control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
+</gear>
+
+<gear x="1.1243" y="-1.0448" z="-1.1706" compression=".15"> <!-- left main -->
+  <control-input axis="/controls/gear/brake-right" control="BRAKE" split="true"/>
+  <control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
+</gear>
+
+<!--Two tanks (left/right) with 135 litres/214 lbs together-->
+<tank x="2.4" y="1.5" z="-0.25" capacity="107"/> 
+<tank x="2.4" y="-1.5" z="-0.25" capacity="107"/> 
+
+<ballast x="2.0" y="0" z="0" mass="500"/> <!-- cockpit -->
+
+<!-- Pilot, copilot, left passenger, right passenger, baggage -->
+<weight x="2.05" y=".33" z="0" mass-prop="/sim/weight[0]/weight-lb"/>
+<weight x="2.05" y="-.33" z="0" mass-prop="/sim/weight[1]/weight-lb"/>
+<weight x="3.00" y="-.33" z="0" mass-prop="/sim/weight[2]/weight-lb"/>
+<weight x="3.00" y="-.33" z="0" mass-prop="/sim/weight[3]/weight-lb"/>
+<weight x="3.63" y="0" z="0" mass-prop="/sim/weight[4]/weight-lb"/>
+
+</airplane>

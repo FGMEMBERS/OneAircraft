@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>one.ac</path>
+ 
+  <animation>
+    <type>material</type>
+    <object-name>fuselage</object-name>
+    <object-name>wings</object-name>
+    <object-name>prop</object-name>
+    <object-name>hstab</object-name>
+    <object-name>spinner</object-name>
+    <object-name>rudder</object-name>
+    <object-name>elevatorL</object-name>
+    <object-name>elevatorR</object-name>
+    <object-name>aileronL</object-name>
+    <object-name>flapsL</object-name>
+    <object-name>aileronR</object-name>
+    <object-name>flapsR</object-name>
+ <!--   <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>direction</object-name>
+    <object-name>trimelevator</object-name>
+    <object-name>axeA</object-name>
+    <object-name>axeAB</object-name>
+    <object-name>cacheA</object-name>
+    <object-name>axeG</object-name>
+    <object-name>cacheG</object-name>
+    <object-name>axeD</object-name>
+    <object-name>cacheD</object-name>
+    <object-name>bol</object-name>
+    <object-name>tail</object-name>
+    <object-name>canopy</object-name>
+    <object-name>porte</object-name>
+    <object-name>attaches</object-name>
+    <object-name>marchepieds</object-name>
+    <object-name>antennes</object-name>-->
+    
+  <!--  <object-name>trous</object-name>
+    <object-name>intcacheA</object-name>
+    <object-name>roueA</object-name>
+    <object-name>intcacheG</object-name>
+    <object-name>roueG</object-name>
+    <object-name>intcacheD</object-name>
+    <object-name>roueD</object-name>
+    <object-name>echappe</object-name>
+    <object-name>helice</object-name>-->
+    
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
+    <specular>
+      <red-prop>specular/red</red-prop>
+      <green-prop>specular/green</green-prop>
+      <blue-prop>specular/blue</blue-prop>
+    </specular>
+  </animation>
+ 
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>windows</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </effect>
+  <model><path>panel.xml</path></model>
+  
+    <!-- Séléction de l'objet visible en fonction des rpm -->
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propblur</object-name>
+    <condition>
+    <and>
+      <greater-than>
+        <property>/engines/engine[0]/rpm</property>
+        <value>600.000</value>
+      </greater-than>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500.001</value>
+      </less-than>
+    </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>prop</object-name>
+    <condition>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>prop</object-name>
+    <object-name>propblur</object-name>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
+    <property>engines/engine[0]/rpm</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> -3.27364 </x-m>
+      <y-m>  0.000000 </y-m>
+      <z-m>  -0.16544 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <!--Flight Control Surfaces-->
+    <!-- Rudder -->
+  <animation>
+    <type>rotate</type>
+    <object-name>rudder</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <interpolation>
+      <entry><ind> -0.75 </ind><dep> -25.0 </dep></entry>
+      <entry><ind>  0.00 </ind><dep>   0.0 </dep></entry>
+      <entry><ind>  0.75 </ind><dep>  25.0 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> 2.7245 </x1-m>
+      <y1-m> 0.00000 </y1-m>
+      <z1-m> -0.1945 </z1-m>
+      <x2-m> 3.2063 </x2-m>
+      <y2-m> 0.00000 </y2-m>
+      <z2-m> 1.0016 </z2-m>
+    </axis>
+  </animation> 
+  <!--Elevator-->
+  <animation>
+    <type>rotate</type>
+    <object-name>elevatorL</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <interpolation>
+      <entry><ind> -0.75 </ind><dep> 12.0 </dep></entry>
+      <entry><ind>  0.00 </ind><dep>   0.0 </dep></entry>
+      <entry><ind>  0.75 </ind><dep>   -9.5 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> 2.729</x1-m>
+      <y1-m> -0.1293 </y1-m>
+      <z1-m> -0.0185 </z1-m>
+      <x2-m> 2.8993 </x2-m>
+      <y2-m> -1.4778 </y2-m>
+      <z2-m> -0.0185 </z2-m>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>elevatorR</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <interpolation>
+      <entry><ind> -0.75 </ind><dep> -12.0 </dep></entry>
+      <entry><ind>  0.00 </ind><dep>   0.0 </dep></entry>
+      <entry><ind>  0.75 </ind><dep>   9.5 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> 2.729</x1-m>
+      <y1-m> 0.1293 </y1-m>
+      <z1-m> -0.0185 </z1-m>
+      <x2-m> 2.8993 </x2-m>
+      <y2-m> 1.4778 </y2-m>
+      <z2-m> -0.0185 </z2-m>
+    </axis>
+  </animation>
+  <!--Flaps--> 
+  <animation>
+    <type>rotate</type>
+    <object-name>flapsL</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> -20 </factor>
+    <axis>
+      <x1-m> -0.7706</x1-m>
+      <y1-m> -0.6533 </y1-m>
+      <z1-m> -0.5522 </z1-m>
+      <x2-m> -0.7706 </x2-m>
+      <y2-m> -3.3179 </y2-m>
+      <z2-m> -0.2755 </z2-m>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>flapsR</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> 20 </factor>
+    <axis>
+      <x1-m> -0.7706</x1-m>
+      <y1-m> 0.6533 </y1-m>
+      <z1-m> -0.5522 </z1-m>
+      <x2-m> -0.7706 </x2-m>
+      <y2-m> 3.3179 </y2-m>
+      <z2-m> -0.2755 </z2-m>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronL</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <interpolation>
+      <entry><ind> -0.75 </ind><dep> 15 </dep></entry>
+      <entry><ind>  0.00 </ind><dep>   0 </dep></entry>
+      <entry><ind>  0.75 </ind><dep>  -10 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -0.7706 </x1-m>
+      <y1-m> -3.3179 </y1-m>
+      <z1-m> -0.2755 </z1-m>
+      <x2-m>-0.7063 </x2-m>
+      <y2-m> -4.2791</y2-m>
+      <z2-m> -0.1335</z2-m>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronR</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <interpolation>
+      <entry><ind> -0.75 </ind><dep> -15 </dep></entry>
+      <entry><ind>  0.00 </ind><dep>   0 </dep></entry>
+      <entry><ind>  0.75 </ind><dep>  10 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -0.7706 </x1-m>
+      <y1-m> 3.3179 </y1-m>
+      <z1-m> -0.2755 </z1-m>
+      <x2-m>-0.7063 </x2-m>
+      <y2-m> 4.2791</y2-m>
+      <z2-m> -0.1335</z2-m>
+    </axis>
+  </animation>
+  
+  
+  <!--Interior-->
+  <!--Throttle-->
+  <animation>
+    <type>translate</type>
+    <object-name>throttle</object-name>
+    <property>controls/engines/engine/throttle</property>
+    <factor>-0.06</factor>
+    <axis>
+        <x>1</x>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>throttle</object-name>
+    <property>controls/engines/engine/throttle</property>
+    <factor>-50</factor>
+    <center>
+      <x-m> -1.31708 </x-m>
+      <z-m>  -0.2 </z-m>
+    </center>
+    <axis>
+        <y>1</y>
+    </axis>
+  </animation>
+  
+</PropertyList>
