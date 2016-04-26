@@ -11,6 +11,10 @@
   <fuel-fraction>0.8</fuel-fraction>
   
 
+	<startup>
+		<splash-texture>Aircraft/OneAircraft/splash.png</splash-texture>
+	</startup>
+
   <sound>
    <path>Sounds/one-sound.xml</path>
   </sound>
