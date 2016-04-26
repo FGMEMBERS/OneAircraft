@@ -282,5 +282,218 @@
         <y>1</y>
     </axis>
   </animation>
-  
+  <!--Flaps Switch-->
+  <animation>
+    <type>pick</type>
+    <object-name>flapslever</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-cycle</command>
+        <property>/controls/flight/flaps</property>
+        <value>0.3</value>
+        <value>0.6</value>
+        <value>1</value>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/flight/flaps-switch</property>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/flight/flaps-switch</property>
+      </binding>
+  </mod-up>
+</action>
+</animation>
+  <animation>
+    <type>pick</type>
+    <object-name>flapslever</object-name>
+    <visible>true</visible>
+    <action>
+      <button>1</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-cycle</command>
+        <property>/controls/flight/flaps</property>
+        <value>0</value>
+        <value>0.3</value>
+        <value>0.6</value>
+        <value>1</value>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/flight/flaps-switch2</property>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/flight/flaps-switch2</property>
+      </binding>
+  </mod-up>
+</action>
+</animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>flapslever</object-name>
+        <property>/controls/flight/flaps-switch</property>
+        <factor>30</factor>
+        <axis><y>1</y></axis>
+    <center>
+      <x-m> -1.50197 </x-m>
+      <y-m>  0.000000 </y-m>
+      <z-m> -0.08124</z-m>
+    </center>
+</animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>flapslever</object-name>
+        <property>/controls/flight/flaps-switch2</property>
+        <factor>-30</factor>
+        <axis><y>1</y></axis>
+    <center>
+      <x-m> -1.50197 </x-m>
+      <y-m>  0.000000 </y-m>
+      <z-m> -0.08124</z-m>
+    </center>
+</animation>
+  <animation>
+    <type>material</type>
+    <object-name>flind0</object-name>
+    <condition>
+      <equals>
+        <property>/surface-positions/flap-pos-norm</property>
+        <value>0</value>
+    </equals>
+    </condition>
+    <emission>
+        <red>0.5</red>
+        <green>1</green>
+        <blue>0.5</blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>flind03</object-name>
+    <condition>
+      <greater-than>
+        <property>/surface-positions/flap-pos-norm</property>
+        <value>0.29</value>
+    </greater-than>
+      <less-than>
+        <property>/surface-positions/flap-pos-norm</property>
+        <value>0.31</value>
+    </less-than>
+    </condition>
+    <emission>
+        <red>0.5</red>
+        <green>1</green>
+        <blue>0.5</blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>flind06</object-name>
+    <condition>
+      <equals>
+        <property>/surface-positions/flap-pos-norm</property>
+        <value>0.6</value>
+    </equals>
+    </condition>
+    <emission>
+        <red>0.5</red>
+        <green>1</green>
+        <blue>0.5</blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>flind1</object-name>
+    <condition>
+      <equals>
+        <property>/surface-positions/flap-pos-norm</property>
+        <value>1</value>
+    </equals>
+    </condition>
+    <emission>
+        <red>0.5</red>
+        <green>1</green>
+        <blue>0.5</blue>
+    </emission>
+  </animation>
+  <!--Magneto Switch-->
+  <animation>
+    <type>pick</type>
+    <object-name>mags</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-cycle</command>
+        <property>/controls/engines/engine/magnetos</property>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+        <value>0</value>
+      </binding>
+</action>
+</animation>
+  <animation>
+    <type>pick</type>
+    <object-name>magspick</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/engines/engine/starter</property>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/engines/engine/starter</property>
+      </binding>
+  </mod-up>
+</action>
+</animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>mags</object-name>
+  <condition>
+   <not>
+    <property>/controls/engines/engine/starter</property>
+   </not>
+  </condition>
+        <property>/controls/engines/engine/magnetos</property>
+        <factor>-60</factor>
+        <axis><x>1</x></axis>
+    <center>
+      <x-m> -1.55159 </x-m>
+      <y-m>  -0.48952</y-m>
+      <z-m> -0.01906</z-m>
+    </center>
+</animation>
+<animation>
+ <type>select</type>
+  <object-name>mags</object-name>
+  <condition>
+   <not>
+    <property>/controls/engines/engine/starter</property>
+   </not>
+  </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+  <object-name>magsstart</object-name>
+  <condition>
+    <property>/controls/engines/engine/starter</property>
+  </condition>
+</animation>  
 </PropertyList>

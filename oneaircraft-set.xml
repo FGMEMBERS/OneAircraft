@@ -25,7 +25,12 @@
        <file type="string">Red</file>
    </livery>
   </model>
-  
+      <flaps>
+      <setting>0.00</setting>
+      <setting>0.3</setting> 
+      <setting>0.6</setting> 
+      <setting>1.00</setting>
+    </flaps>
   <view>
    <internal archive="y">true</internal>
    <config>
